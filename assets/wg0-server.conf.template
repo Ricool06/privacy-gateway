@@ -1,0 +1,10 @@
+[Interface]
+PrivateKey = ${SERVER_PRIVATE_KEY}
+ListenPort = 51820
+PostUp     = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o ${DEFAULT_NIC} -j MASQUERADE
+PostDown   = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o ${DEFAULT_NIC} -j MASQUERADE
+Address    = 192.168.0.1/24
+
+[Peer]
+PublicKey  = ${CLIENT_PUBLIC_KEY}
+AllowedIPs = 192.168.0.2/24
