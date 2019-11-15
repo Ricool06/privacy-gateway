@@ -1,9 +1,11 @@
-#  Local .terraform directories
-**/.terraform/*
+*.js
+!jest.config.js
+*.d.ts
+node_modules
 
-# .tfstate files
-*.tfstate
-*.tfstate.*
+# CDK asset staging directory
+.cdk.staging
+cdk.out
 
-# .tfvars files
-*.tfvars
+**/*.key
+**/*.conf
